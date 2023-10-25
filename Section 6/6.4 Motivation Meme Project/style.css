@@ -1,0 +1,19 @@
+html{
+    background-color: black;
+    color: white;
+    text-align: center;
+  }
+
+  img{
+    border: 5px solid white;
+    margin-top: 100px;
+  }
+  h1{
+    /* color: white; */
+    font-family: 'Times New Roman',cursive;
+    font-size: 3rem;
+    text-transform: uppercase ;
+  }
+  p{
+    font-size: 1.5rem;
+  }
