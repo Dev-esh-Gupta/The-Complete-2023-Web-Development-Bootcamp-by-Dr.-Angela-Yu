@@ -1,0 +1,1 @@
+You must aware of version control and other things before working on full stack development
