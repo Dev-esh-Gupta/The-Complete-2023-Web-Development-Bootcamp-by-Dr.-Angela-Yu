@@ -20,28 +20,23 @@ app.use(express.static("public"));
 let currentUserId = 1;
 
 let users = [
-  { id: 1, name: "Devesh", color: "teal" },
-  { id: 2, name: "Shivesh", color: "powderblue" },
+  { id: 1, name: "Angela", color: "teal" },
+  { id: 2, name: "Jack", color: "powderblue" },
 ];
 
 async function checkVisisted() {
-  const result = await db.query(
-    "SELECT country_code FROM visited_countries JOIN users ON users.id = user_id WHERE user_id = $1; ",
-    [currentUserId]
-  );
+  const result = await db.query("SELECT country_code FROM visited_countries JOIN users ON users.id = user_id WHERE user_id = $1;", [currentUserId]);
   let countries = [];
   result.rows.forEach((country) => {
     countries.push(country.country_code);
   });
   return countries;
 }
-
 async function getCurrentUser() {
   const result = await db.query("SELECT * FROM users");
   users = result.rows;
   return users.find((user) => user.id == currentUserId);
 }
-
 app.get("/", async (req, res) => {
   const countries = await checkVisisted();
   const currentUser = await getCurrentUser();
