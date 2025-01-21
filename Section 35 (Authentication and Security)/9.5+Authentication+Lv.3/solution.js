@@ -132,12 +132,15 @@ passport.use(
         const storedHashedPassword = user.password;
         bcrypt.compare(password, storedHashedPassword, (err, valid) => {
           if (err) {
+            // Error with password check
             console.error("Error comparing passwords:", err);
             return cb(err);
           } else {
             if (valid) {
+              // passed password check
               return cb(null, user);
             } else {
+              // Did not pass password check
               return cb(null, false);
             }
           }
